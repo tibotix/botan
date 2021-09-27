@@ -9,6 +9,8 @@
 
 #include <botan/types.h>
 #include <botan/point_gfp.h>
+#include <botan/reducer.h>
+#include <botan/ec_group.h>
 #include <string>
 
 namespace Botan {
@@ -25,6 +27,15 @@ void BOTAN_TEST_API expand_message_xmd(const std::string& hash_fn,
                                        size_t input_len,
                                        const uint8_t domain_sep[],
                                        size_t domain_sep_len);
+
+
+std::vector<BigInt> hash_to_field(const EC_Group& group,
+              const Modular_Reducer& mod_p,
+              const std::string& hash_fn,
+              uint8_t count,
+              const uint8_t input[], size_t input_len,
+              const uint8_t domain_sep[], size_t domain_sep_len);
+
 
 
 /**

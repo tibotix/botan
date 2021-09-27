@@ -5,9 +5,7 @@
 */
 
 #include <botan/internal/ec_h2c.h>
-#include <botan/ec_group.h>
 #include <botan/numthry.h>
-#include <botan/reducer.h>
 #include <botan/hash.h>
 
 namespace Botan {
@@ -73,8 +71,6 @@ void expand_message_xmd(const std::string& hash_fn,
       }
    }
 
-namespace {
-
 std::vector<BigInt>
 hash_to_field(const EC_Group& group,
               const Modular_Reducer& mod_p,
@@ -103,6 +99,9 @@ hash_to_field(const EC_Group& group,
 
    return results;
    }
+   
+namespace {
+
 
 BigInt sswu_z(const EC_Group& group)
    {
